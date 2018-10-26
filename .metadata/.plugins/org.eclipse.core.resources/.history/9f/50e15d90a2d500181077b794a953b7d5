@@ -1,0 +1,107 @@
+package com.vnlearn.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.vnlearn.entity.Account;
+import com.vnlearn.service.AccountService;
+import com.vnlearn.serviceimpl.AccountServiceImpl;
+
+
+        /**
+         * @author HQTrung
+         * Create date: Oct 21, 2018
+         * Modifier: HQTrung
+         * Modified date: Oct 21, 2018
+         * Description: .Servet control follow for HomPage.
+         * Version 1.0
+         */
+public class MainServlet extends HttpServlet {
+        /**
+         * serialVersionUID: long
+         */
+        private static final long serialVersionUID = 1L;
+        /**
+         * accountService: instance of AccountService
+         */
+        private AccountService accountService;
+
+
+        /**
+         * Create by: HQTrung
+         * Create date: Oct 21, 2018
+         * Modifier: HQTrung
+         * Modified date: Oct 21, 2018
+         * Description: ....
+         * Version 1.0
+         */
+        public MainServlet() {
+                super();
+                // TODO
+        }
+
+        /**
+         * Create by: HQTrung
+         * Create date: Oct 21, 2018
+         * Modifier: HQTrung
+         * Modified date: Oct 21, 2018
+         * Description: method handle [Get] request, handle login
+         * Version 1.0
+         */
+        protected void doGet(HttpServletRequest request, HttpServletResponse response)
+                        throws ServletException, IOException {
+                response.setContentType(Messages.getString("MainServlet.0")); //$NON-NLS-1$
+
+                String email = request.getParameter(Messages.getString("MainServlet.1")); //$NON-NLS-1$
+                String pwd = request.getParameter(Messages.getString("MainServlet.2")); //$NON-NLS-1$
+
+                PrintWriter out = response.getWriter();
+                accountService = new AccountServiceImpl();
+                Account account = new Account();
+                account.setEmail(email);
+                account.setPwd(pwd);
+                boolean checkLogin = accountService.loginAccount(account);
+
+                out.print(checkLogin);
+                out.flush();
+        }
+
+
+        /**
+         * Create by: HQTrung
+         * Create date: Oct 21, 2018
+         * Modifier: HQTrung
+         * Modified date: Oct 21, 2018
+         * Description: .hanlde regist account...
+         * Version 1.0
+         */
+        protected void doPost(HttpServletRequest request, HttpServletResponse response)
+                        throws ServletException, IOException {
+                // doGet(request, response);
+                response.setContentType(Messages.getString("MainServlet.3")); //$NON-NLS-1$
+                String fullName = request.getParameter(Messages.getString("MainServlet.4")); //$NON-NLS-1$
+                String telephoneNumber = request.getParameter(Messages.getString("MainServlet.5")); //$NON-NLS-1$
+                String email = request.getParameter(Messages.getString("MainServlet.6")); //$NON-NLS-1$
+                String pwd = request.getParameter(Messages.getString("MainServlet.7")); //$NON-NLS-1$
+
+                PrintWriter out = response.getWriter();
+
+                accountService = new AccountServiceImpl();
+                Account account = new Account();
+                account.setFullName(fullName);
+                account.setTelephoneNumber(telephoneNumber);
+                account.setEmail(email);
+                account.setPwd(pwd);
+
+                boolean checkRegister = accountService.registerAccount(account);
+                out.print(checkRegister);
+                out.flush();
+
+        }
+
+}

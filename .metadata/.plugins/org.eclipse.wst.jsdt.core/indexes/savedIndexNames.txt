@@ -1,0 +1,5 @@
+INDEX VERSION 1.4+C:\HaQuangTrungData\DATA\VNLEARN\VnLearnWS\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1090565478.index
+2767668529.index
+3542939126.index
+2831728136.index

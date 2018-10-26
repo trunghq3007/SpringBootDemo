@@ -1,0 +1,16 @@
+/**
+ * 
+ */
+package com.vnlearn.dao;
+
+import java.util.List;
+
+import com.vnlearn.entity.Car;
+
+/**
+ * @author Tuan
+ *
+ */
+public interface CarDAO {
+        List<Car> getAllListCar();
+}

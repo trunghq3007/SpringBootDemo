@@ -1,0 +1,2 @@
+AccountDAOImpl.0=insert into Account(FullName,TelephoneNumber,Email,Pwd) values(?,?,?,?)
+AccountDAOImpl.1=select * from Account where Email = ? and Pwd = ?

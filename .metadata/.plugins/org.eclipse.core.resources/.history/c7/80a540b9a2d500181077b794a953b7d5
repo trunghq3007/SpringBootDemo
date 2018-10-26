@@ -1,0 +1,19 @@
+/**
+ * 
+ */
+package com.vnlearn.dao;
+
+import com.vnlearn.entity.Account;
+
+/**
+ * @author Tuan
+ *
+ */
+public interface AccountDAO {
+        /**
+         * @param account
+         * @return
+         */
+        boolean registerAccount(Account account);
+        boolean loginAccount(Account account);
+}
